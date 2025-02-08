@@ -1,16 +1,16 @@
 # == Schema Information
 #
-# Table name: colleges
+# Table name: students
 #
 #  id          :bigint           not null, primary key
 #  name        :string
-#  description :text
+#  roll_number :string
+#  course_id   :bigint
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
-FactoryBot.define do
-  factory :college do
-    name { Faker::Name.name  }
-    description { Faker::Address.full_address }
-  end
+class Student < ApplicationRecord
+	include UtilityHelper
+
+  belongs_to :course
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_02_06_215229) do
+ActiveRecord::Schema.define(version: 2025_02_06_233058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,4 +23,35 @@ ActiveRecord::Schema.define(version: 2025_02_06_215229) do
     t.index ["name"], name: "index_colleges_on_name"
   end
 
+  create_table "courses", force: :cascade do |t|
+    t.string "title"
+    t.integer "duration"
+    t.bigint "college_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["college_id"], name: "index_courses_on_college_id"
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "name"
+    t.string "roll_number"
+    t.bigint "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_students_on_course_id"
+    t.index ["roll_number"], name: "index_students_on_roll_number"
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string "name"
+    t.bigint "course_id"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_subjects_on_course_id"
+  end
+
+  add_foreign_key "courses", "colleges"
+  add_foreign_key "students", "courses"
+  add_foreign_key "subjects", "courses"
 end
