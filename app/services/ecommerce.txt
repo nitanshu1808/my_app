@@ -1,0 +1,33 @@
+Scenario:
+You are building an order processing system for an e-commerce website. You have an array of orders where each order is represented as a hash.
+
+Each order contains:
+
+id: Order ID
+customer: Customer name
+items: An array of items purchased (each item is a hash containing name, price, and quantity).
+status: Order status ("pending", "shipped", or "delivered")
+Task:
+Calculate the total revenue (sum of price * quantity for all orders).
+Group orders by status (return a hash where keys are statuses and values are arrays of orders).
+Find the top customer who spent the most money.
+List unique products sold, along with their total quantity.
+
+
+
+Sample Input
+
+orders = [
+  { id: 1, customer: "Alice", items: [{ name: "Laptop", price: 1000, quantity: 1 }, { name: "Mouse", price: 50, quantity: 2 }], status: "shipped" },
+  { id: 2, customer: "Bob", items: [{ name: "Laptop", price: 1000, quantity: 2 }], status: "pending" },
+  { id: 3, customer: "Alice", items: [{ name: "Keyboard", price: 100, quantity: 1 }], status: "delivered" },
+  { id: 4, customer: "Charlie", items: [{ name: "Monitor", price: 300, quantity: 1 }], status: "shipped" },
+]
+
+
+Expected Output
+
+total_revenue => 3450
+grouped_orders => { "shipped" => [order_1, order_4], "pending" => [order_2], "delivered" => [order_3] }
+top_customer => "Bob" # (spent 2000)
+unique_products => { "Laptop" => 3, "Mouse" => 2, "Keyboard" => 1, "Monitor" => 1 }
