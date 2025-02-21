@@ -1,0 +1,20 @@
+You need to design a University Management System using OOP principles in Ruby. The system should handle multiple courses and students efficiently.
+
+Requirements:
+Class: University
+
+Manages multiple courses.
+Add and remove courses.
+Find the course with the highest number of students.
+Class: Course
+
+Each course has a name and a list of students.
+Add and remove students.
+Search students by name or ID.
+Sort students by name.
+Implements Comparable to compare courses by the number of students.
+Class: Student
+
+Each student has a name, ID, and GPA.
+Implement a custom sorting method to sort students by GPA.
+Display student details in a formatted way.

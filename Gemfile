@@ -60,4 +60,5 @@ gem 'awesome_print'
 
 gem 'annotate'
 
-gem 'byebug'
+
+gem 'redis'

@@ -1,0 +1,44 @@
+Intercom builds a customer service product that allows businesses to talk to their end users.
+In this programming exercise, we’d like you to build functionality that determines how conversations
+should be assigned to the customer support staff (who we will refer to as “operators”).
+
+Task: Load-balanced assignments
+Implement a AssignmentSystem class that has the following API:
+- Initializes with a set of available operators.
+- set_limit(operator_name, n)
+  Sets an operator’s limit.
+- assign(conversation_id)
+  Assigns a given conversation to the next available operator.
+- get_assignment_queue(n)
+  Returns a queue of size n of the next possible assignments, respecting operators’ limits and balancing load fairly.
+
+Requirements
+1. Multiple Operators: Multiple operators are handling support conversations.
+2. Load balanced: Assign conversations to the operator with the least current assignments.
+  Tie-Breaking Rule: If multiple operators have the same number of assignments, priority is given to 
+  the operator who received their most recent assignment the earliest.
+3. Assignment limits: Do not assign more than the specific limit of conversations.
+  The default limit is 2 assignments per operator.
+'''
+
+
+# Example
+# operators = ["Alice", "Bob", "Charlie"]
+# system = AssignmentSystem(operators)
+
+# system.set_limit("Bob", 4)
+# system.set_limit("Charlie", 3)
+
+# I want to know who will receive next 4 conversations
+# system.get_assignment_queue(4)
+# ["Alice", "Bob", "Charlie", "Alice"]
+
+# Make some assignments
+# system.assign(101)  # Assigns to Alice
+# system.assign(102)  # Assigns to Bob
+# system.assign(103)  # Assigns to Charlie
+# system.assign(104)  # Assigns to Alice
+
+# Now that the above assignments have been made, I want to know who will receive next 5 conversations
+# system.get_assignment_queue(5)
+# ['Bob', 'Charlie', 'Bob', 'Charlie', 'Bob']

@@ -1,0 +1,30 @@
+List all colleges along with the number of courses they offer. Only include colleges that offer more than 3 courses.
+
+Select courses.id, courses.name, COUNT(courses.id) as total_course_in_college from colleges Inner join courses ON colleges.id = courses.college_id group by(colleges.id) having COUNT(courses.id) > 3
+
+Retrieve the number of students enrolled in each course, but only for courses that have more than 5 students.
+
+select courses.id, courses.title, count(students.id) as total_student_in_course from courses INNER join students on students.course_id = courses.id group by courses.id, courses.title having count(students.id) > 5
+
+
+Find the average duration of courses offered by each college, and only show colleges where the average duration is greater than 3 years.
+
+select 'colleges.id', 'colleges.name', 'AVG(courses.duration) as average_course_duration' from colleges inner join courses on courses.college_id = colleges.id group by ('colleges.id', 'colleges.name').having('AVG(courses.duration) > 3')
+
+
+College.joins(:courses).select('colleges.id', 'colleges.name', 'AVG(courses.duration) as average_course_duration').group('colleges.id', 'colleges.name').having('AVG(courses.duration) > 3')
+
+Get the number of messages exchanged in each conversation, but only for conversations where more than 10 messages were exchanged.
+
+Find the total number of students enrolled in each college, grouping by college and filtering out colleges with fewer than 20 students.
+
+List all subjects along with the number of students enrolled in their respective courses. Only show subjects where the course has more than 10 students.
+
+Find the number of distinct senders in each conversation and only include conversations where there were at least 5 different senders.
+
+Show the total number of messages sent by each user, but only include users who have sent more than 50 messages.
+
+Find the number of courses per college and only include colleges that have at least 2 subjects per course on average.
+
+List users along with the count of messages they received, only including users who have received more than 20 messages.
+
